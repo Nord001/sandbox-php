@@ -10,3 +10,10 @@
 - name: php-modules | Install php5-curl
   sudo: yes
   apt: pkg=php5-curl state=latest
+
+- name: php-modules | Install php5-mysql
+  sudo: yes
+  apt: pkg=php5-mysql state=latest
+
+- name: php-modules | Install Composer
+  shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
