@@ -1,0 +1,12 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+    doc_root: /vagrant/web
+  tasks:
+    - include: tasks/init.yml
+    - include: tasks/nginxphp.yml
+    - include: tasks/phpmodules.yml
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted

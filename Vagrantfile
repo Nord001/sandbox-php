@@ -12,18 +12,10 @@ Vagrant.configure("2") do |config|
     config.vm.network :private_network, ip: "192.168.33.101"
     config.ssh.forward_agent = true
 
-  config.vm.provider :virtualbox do |v|
-    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    v.customize ["modifyvm", :id, "--memory", 2048]
-    v.customize ["modifyvm", :id, "--name", "vagrantee-symfony"]
-  end
-
-    config.vm.synced_folder "./application/test/", "/vagrant", id: "vagrant-root", :nfs => true
-
-    config.vm.provision :puppet do |puppet|
-        puppet.manifests_path = "vagrantee/puppet/manifests"
-        puppet.module_path = "vagrantee/puppet/modules"
-        puppet.options = ['--verbose']
+    config.vm.provision "ansible" do |ansible|
+        ansible.playbook = "vagrantee/ansible/provision.yml"
+        ansible.verbose = "vv"
     end
 
+    config.vm.synced_folder "./application/test/", "/vagrant", id: "vagrant-root", :nfs => true
 end

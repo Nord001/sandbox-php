@@ -1,0 +1,12 @@
+---
+- name: php-modules | Install php5-cli
+  sudo: yes
+  apt: pkg=php5-cli state=latest
+
+- name: php-modules | Install php-pear
+  sudo: yes
+  apt: pkg=php-pear state=latest
+
+- name: php-modules | Install php5-curl
+  sudo: yes
+  apt: pkg=php5-curl state=latest
