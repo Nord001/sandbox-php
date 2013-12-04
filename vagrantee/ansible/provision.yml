@@ -8,7 +8,8 @@
     mysql_pass: vagrantee
   tasks:
     - include: tasks/init.yml
-    - include: tasks/apachephp.yml
+    #if you prefer apache, change nginxphp.yml below to apachephp.yml
+    - include: tasks/nginxphp.yml
     - include: tasks/mysql.yml
     - include: tasks/phpmodules.yml
   handlers:
