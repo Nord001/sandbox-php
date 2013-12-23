@@ -3,9 +3,10 @@
   sudo: yes
   apt: update_cache=yes
 
-- name: init | Install Git
+- name: init | Install Sys Packages
   sudo: yes
-  apt: pkg=git state=latest
+  apt: pkg={{ item }} state=latest
+  with_items: sys_packages
 
 - name: init | Install Curl
   sudo: yes

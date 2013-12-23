@@ -1,9 +1,3 @@
-$script = <<SCRIPT
-if ! egrep -q '^COMPOSER_HOME' /etc/environment; then
-  echo 'COMPOSER_HOME="/home/vagrant"' >> /etc/environment
-fi
-SCRIPT
-
 Vagrant.configure("2") do |config|
 
     config.vm.box = "precise64"

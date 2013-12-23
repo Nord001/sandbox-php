@@ -1,15 +1,11 @@
 ---
-- name: mysql | Install MySQL Server
+- name: mysql | Install MySQL Packages
   sudo: yes
-  apt: pkg=mysql-server state=latest
-
-- name: mysql | Install MySQL Client
-  sudo: yes
-  apt: pkg=mysql-client state=latest
-
-- name: mysql | Install python-mysqldb
-  sudo: yes
-  apt: pkg=python-mysqldb state=latest
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - mysql-server
+    - mysql-client
+    - python-mysqldb
 
 - name: mysql | Create default database
   sudo: yes
