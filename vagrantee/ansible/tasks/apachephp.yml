@@ -8,7 +8,7 @@
   apt: pkg=php5 state=latest
 
 - name: Apache Modules
-  shell: a2enmod $item
+  shell: a2enmod {{ item }}
   notify: restart apache
   with_items:
     - rewrite
