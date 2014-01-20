@@ -44,13 +44,17 @@ class { 'nginxphp':
 /********************************************************
  If you want to use Apache, uncomment below (and comment
  the nginxphp declaration)
- and change the "before" option to Class['apachephp']
- on the exec {'apt-update-refresh'}
+ You'll also have to change the dependencies on
+ apt-update-refresh and composer declarations
 ********************************************************/
 #class { 'apachephp':
 #  doc_root => '/vagrant/web',
 #  php_packages => $php_packages,
 #}
+
+class { 'composer':
+  require => [ Package['curl'], Class['nginxphp'] ],
+}
 
 class { 'mysql':
   default_user => 'vagrantee',
