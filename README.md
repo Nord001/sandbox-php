@@ -7,6 +7,17 @@ This is a basic PHP sandbox with:
  - Composer
  - Configurable system packages and PHP modules
 
-For now, the provision is made with Ansible. 
+Provisioning is available with:
+ - Ansible
+ - Puppet
+ 
+Where Ansible is the default. To change to other provisioner, just edit the Vagrantfile and comment / uncomment the necessary blocks.
 
-Puppet and Chef provisioning will be available soon.
+After provisioning with `vagrant up`, the VM will be live at 192.168.33.101 (you can access it through your browser and you should see a phpinfo() output).
+
+###Note about Ansible
+You'll need to install `ansible` before you can use this provisioner.
+Ubuntu users: you can use this ppa: https://launchpad.net/~rquillo/+archive/ansible.
+
+###Note about NFS for Ubuntu users
+You'll need to install `nfs-common` and `nfs-kernel-server`.
