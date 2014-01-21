@@ -10,6 +10,9 @@ node.default['system']['packages'] = ['curl','git','vim']
 node.default['nginx']['server_name'] = "192.168.33.101"
 node.default['nginx']['doc_root'] = "/vagrant/web"
 
+#apache settings
+node.default['apache']['doc_root'] = "/vagrant/web"
+
 #php packages
 node.default['php']['packages'] = ['php5-cli','php5-curl','php-pear','php5-mysql']
 
@@ -42,6 +45,10 @@ node['system']['packages'].each do |p|
 
 end
 
+##############################################################
+# Comment / Uncomment for changing between nginx and apache
+##############################################################
 include_recipe 'nginxphp'
+#include_recipe 'apachephp'
 include_recipe 'composer'
 include_recipe 'mysql'

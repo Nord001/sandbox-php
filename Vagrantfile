@@ -13,16 +13,25 @@ Vagrant.configure("2") do |config|
     config.vm.provision "ansible" do |ansible|
         ansible.playbook = "vagrantee/ansible/provision.yml"
         ansible.inventory_path = "vagrantee/ansible/inventory_default"
+        #ansible.verbose = 'vv'
     end
 
     #############################################################
-    # Puppet provisioning
+    # Puppet provisioning (puppet_apply)
     #############################################################
-    #config.vm.provision :puppet do |puppet|
-    #    puppet.manifests_path = "vagrantee/puppet/manifests"
-    #    puppet.module_path = "vagrantee/puppet/modules"
-    #    puppet.options = ['--verbose']
-    #end
+#    config.vm.provision :puppet do |puppet|
+#        puppet.manifests_path = "vagrantee/puppet/manifests"
+#        puppet.module_path = "vagrantee/puppet/modules"
+#        puppet.options = ['--verbose']
+#    end
+
+    #############################################################
+    # Chef provisioning (chef_solo)
+    #############################################################
+#    config.vm.provision "chef_solo" do |chef|
+#        chef.cookbooks_path = "vagrantee/chef"
+#        chef.add_recipe "vagrantee"
+#    end
 
     config.vm.synced_folder "./application/test/", "/vagrant", id: "vagrant-root", :nfs => true
 end
